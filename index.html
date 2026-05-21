@@ -30,10 +30,10 @@ body{
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:20px;
     position:absolute;
     top:0;
     left:0;
+    padding:20px;
     animation:fade 1s ease;
 }
 
@@ -52,7 +52,7 @@ body{
     }
 }
 
-/* CARD */
+/* GLASS CARD */
 
 .card{
     background:rgba(255,255,255,.15);
@@ -60,8 +60,17 @@ body{
     padding:25px;
     border-radius:25px;
     width:90%;
-    max-width:380px;
+    max-width:370px;
     box-shadow:0 0 30px rgba(0,0,0,.2);
+}
+
+/* GIF */
+
+.gif{
+    width:160px;
+    border-radius:20px;
+    margin-bottom:15px;
+    box-shadow:0 0 20px rgba(255,255,255,.2);
 }
 
 /* TEXT */
@@ -77,15 +86,6 @@ p{
     font-size:16px;
 }
 
-/* GIF */
-
-.gif{
-    width:150px;
-    border-radius:20px;
-    margin-bottom:15px;
-    box-shadow:0 0 20px rgba(255,255,255,.2);
-}
-
 /* BUTTON */
 
 button{
@@ -99,19 +99,21 @@ button{
     cursor:pointer;
     transition:.3s;
     font-weight:bold;
+    box-shadow:0 0 20px rgba(255,255,255,.25);
 }
 
 button:hover{
     transform:scale(1.08);
 }
 
-/* HEARTS */
+/* HEART RAIN */
 
 .heart{
     position:absolute;
     color:white;
     animation:fall linear infinite;
     opacity:.7;
+    z-index:-1;
 }
 
 @keyframes fall{
@@ -125,25 +127,45 @@ button:hover{
     }
 }
 
+/* LAST PAGE */
+
+.last-page{
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url('https://i.pinimg.com/736x/5d/5b/80/5d5b80c9e6fbbdce2fd4c8b1ff3f1f08.jpg');
+
+    background-size:cover;
+    background-position:center;
+}
+
 /* AESTHETIC GALLERY */
 
 .gallery{
     width:100%;
-    max-width:380px;
+    max-width:390px;
+
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:12px;
-    padding:10px;
+
+    gap:14px;
+    padding:15px;
 }
 
 .gallery img{
     width:100%;
-    height:230px;
+    height:240px;
+
     object-fit:cover;
-    border-radius:20px;
-    box-shadow:0 0 20px rgba(255,255,255,.2);
+
+    border-radius:22px;
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,.18);
+
     transition:.3s;
 }
+
+/* AESTHETIC STYLE */
 
 .gallery img:nth-child(2){
     margin-top:35px;
@@ -154,11 +176,12 @@ button:hover{
 }
 
 .gallery img:hover{
-    transform:scale(1.03);
+    transform:scale(1.04);
 }
 
 </style>
 </head>
+
 <body>
 
 <!-- PAGE 1 -->
@@ -238,28 +261,16 @@ button:hover{
         </p>
 
         <button onclick="nextPage(4)">
-            Open Album 🎁
+           Open Album 🎁
         </button>
 
     </div>
 
 </div>
 
-<!-- PAGE 4 -->
+<!-- LAST PAGE -->
 
-<div class="page" id="page4">
-
-    <div class="aesthetic-bg">
-        📚 ✨ 🌸 💖 ☁️
-    </div>
-
-    <h1 style="margin-bottom:10px;">
-        Happy Birthday Abhigna 🎂💖
-    </h1>
-
-    <p style="margin-bottom:20px;">
-        Some beautiful memories ✨
-    </p>
+<div class="page last-page" id="page4">
 
     <div class="gallery">
 
@@ -271,3 +282,50 @@ button:hover{
     </div>
 
 </div>
+
+<script>
+
+/* PAGE SWITCH */
+
+function nextPage(page){
+
+    document.querySelectorAll(".page")
+    .forEach(p=>{
+        p.classList.remove("active");
+    });
+
+    document.getElementById("page"+page)
+    .classList.add("active");
+}
+
+/* HEART RAIN */
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.classList.add("heart");
+
+    heart.innerHTML="💖";
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.animationDuration=
+    (Math.random()*3+3)+"s";
+
+    heart.style.fontSize=
+    (Math.random()*20+15)+"px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart,250);
+
+</script>
+
+</body>
+</html>
