@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Abhigna 🎂</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+/* HEARTS */
+.heart{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    animation:fall linear infinite;
+    opacity:.7;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-10vh);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+/* CARD */
+.card{
+    width:90%;
+    max-width:400px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    animation:pop 1s ease;
+}
+
+@keyframes pop{
+    from{
+        transform:scale(0);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+h1{
+    font-size:2.2rem;
+    margin-bottom:10px;
+}
+
+h2{
+    font-size:1rem;
+    font-weight:400;
+    margin-bottom:15px;
+}
+
+.message{
+    font-size:15px;
+    line-height:1.7;
+    margin-top:15px;
+}
+
+img{
+    width:140px;
+    border-radius:20px;
+    margin-top:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+button{
+    margin-top:25px;
+    padding:12px 24px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4d88;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+.page{
+    display:none;
+}
+
+.active{
+    display:block;
+    animation:fade 1s ease;
+}
+
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="card active page" id="page1">
+
+    <h1>Happy Birthday Abhigna 🎂❤️</h1>
+
+    <h2>23 May ✨</h2>
+
+    <img src="https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif">
+
+    <div class="message">
+        Today is all about you 🥹💖<br><br>
+
+        And honestly…  
+        I’m really grateful that I got to know someone like you.
+    </div>
+
+    <button onclick="nextPage(1,2)">
+        Next 💌
+    </button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="card page" id="page2">
+
+    <h1>4 Months Already?! 🥹</h1>
+
+    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+
+    <div class="message">
+        It’s been 4 months already  
+        and somehow every moment with you  
+        became a memory worth keeping ✨
+        <br><br>
+        Random talks, laughs, silly moments…  
+        everything feels special with you 💖
+    </div>
+
+    <button onclick="nextPage(2,3)">
+        One More ✨
+    </button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="card page" id="page3">
+
+    <h1>Bestie Forever? 🌸</h1>
+
+    <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif">
+
+    <div class="message">
+        I just want you to stay happy,  
+        keep smiling and never change 💕
+        <br><br>
+        Thank you for being such an amazing bestie ✨
+        <br><br>
+        Happy Birthday once again, Abhigna 🎂❤️
+    </div>
+
+    <button onclick="finalPage()">
+        Final Surprise 🎁
+    </button>
+</div>
+
+<script>
+function nextPage(current,next){
+    document.getElementById("page"+current).classList.remove("active");
+    document.getElementById("page"+next).classList.add("active");
+}
+
+function finalPage(){
+    document.body.innerHTML=`
+    <div style="
+        text-align:center;
+        padding:30px;
+        animation:fade 1s ease;
+    ">
+        <h1 style="
+            font-size:3rem;
+            margin-bottom:20px;
+        ">
+            Happy Birthday Abhigna 🎂❤️
+        </h1>
+
+        <p style="
+            font-size:1.3rem;
+            line-height:1.8;
+        ">
+            23 May will always be special ✨<br><br>
+            Thank you for these beautiful 4 months 💖<br><br>
+            Bestie forever? 🥹🌸
+        </p>
+    </div>
+    `;
+}
+
+/* HEART RAIN */
+setInterval(()=>{
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+
+},300);
+</script>
+
+</body>
+</html>
