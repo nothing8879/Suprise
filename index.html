@@ -6,7 +6,6 @@
 <title>Happy Birthday Abhigna 🎂</title>
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -15,168 +14,109 @@
 }
 
 body{
+    height:100vh;
     overflow:hidden;
     background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
-    color:white;
-}
-
-/* PAGES */
-
-.page{
-    width:100%;
-    height:100vh;
-    display:none;
-    flex-direction:column;
+    display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
+    color:white;
+}
+
+/* HEARTS */
+.heart{
     position:absolute;
-    top:0;
-    left:0;
-    padding:20px;
-    animation:fade 1s ease;
+    color:white;
+    font-size:20px;
+    animation:fall linear infinite;
+    opacity:.7;
 }
 
-.active{
-    display:flex;
-}
-
-@keyframes fade{
+@keyframes fall{
     from{
-        opacity:0;
-        transform:scale(1.05);
+        transform:translateY(-10vh);
     }
     to{
-        opacity:1;
-        transform:scale(1);
+        transform:translateY(110vh);
     }
 }
 
-/* GLASS CARD */
-
+/* CARD */
 .card{
-    background:rgba(255,255,255,.15);
-    backdrop-filter:blur(12px);
-    padding:25px;
-    border-radius:25px;
     width:90%;
-    max-width:370px;
-    box-shadow:0 0 30px rgba(0,0,0,.2);
+    max-width:400px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    animation:pop 1s ease;
 }
 
-/* GIF */
-
-.gif{
-    width:160px;
-    border-radius:20px;
-    margin-bottom:15px;
-    box-shadow:0 0 20px rgba(255,255,255,.2);
+@keyframes pop{
+    from{
+        transform:scale(0);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
 }
-
-/* TEXT */
 
 h1{
     font-size:2.2rem;
+    margin-bottom:10px;
+}
+
+h2{
+    font-size:1rem;
+    font-weight:400;
     margin-bottom:15px;
-    text-shadow:0 0 20px rgba(255,255,255,.5);
 }
 
-p{
-    line-height:1.8;
-    font-size:16px;
+.message{
+    font-size:15px;
+    line-height:1.7;
+    margin-top:15px;
 }
 
-/* BUTTON */
+img{
+    width:140px;
+    border-radius:20px;
+    margin-top:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
 
 button{
     margin-top:25px;
-    padding:13px 30px;
+    padding:12px 24px;
     border:none;
     border-radius:30px;
     background:white;
     color:#ff4d88;
-    font-size:17px;
+    font-size:16px;
     cursor:pointer;
     transition:.3s;
-    font-weight:bold;
-    box-shadow:0 0 20px rgba(255,255,255,.25);
 }
 
 button:hover{
     transform:scale(1.08);
 }
 
-/* HEART RAIN */
-
-.heart{
-    position:absolute;
-    color:white;
-    animation:fall linear infinite;
-    opacity:.7;
-    z-index:-1;
+.page{
+    display:none;
 }
 
-@keyframes fall{
-    0%{
-        transform:translateY(-100px);
-        opacity:1;
-    }
-    100%{
-        transform:translateY(100vh);
-        opacity:0;
-    }
+.active{
+    display:block;
+    animation:fade 1s ease;
 }
 
-/* LAST PAGE */
-
-.last-page{
-    background:
-    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
-    url('https://i.pinimg.com/736x/5d/5b/80/5d5b80c9e6fbbdce2fd4c8b1ff3f1f08.jpg');
-
-    background-size:cover;
-    background-position:center;
-}
-
-/* AESTHETIC GALLERY */
-
-.gallery{
-    width:100%;
-    max-width:390px;
-
-    display:grid;
-    grid-template-columns:1fr 1fr;
-
-    gap:14px;
-    padding:15px;
-}
-
-.gallery img{
-    width:100%;
-    height:240px;
-
-    object-fit:cover;
-
-    border-radius:22px;
-
-    box-shadow:
-    0 0 20px rgba(255,255,255,.18);
-
-    transition:.3s;
-}
-
-/* AESTHETIC STYLE */
-
-.gallery img:nth-child(2){
-    margin-top:35px;
-}
-
-.gallery img:nth-child(3){
-    margin-top:-35px;
-}
-
-.gallery img:hover{
-    transform:scale(1.04);
+@keyframes fade{
+    from{opacity:0;}
+    to{opacity:1;}
 }
 
 </style>
@@ -185,145 +125,188 @@ button:hover{
 <body>
 
 <!-- PAGE 1 -->
+<div class="card active page" id="page1">
 
-<div class="page active" id="page1">
+    <h1>Happy Birthday Abhigna 🎂❤️</h1>
 
-    <div class="card">
+    <h2>23 May ✨</h2>
 
-        <img 
-        src="https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif"
-        class="gif">
+    <img src="https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif">
 
-        <h1>Happy Birthday Abhigna 🎂❤️</h1>
+    <div class="message">
+        Today is all about you 🥹💖<br><br>
 
-        <p>
-            23 May ✨<br><br>
-
-            Today is all about you 💖<br>
-            and honestly I'm really lucky
-            to have you in my life 🌸
-        </p>
-
-        <button onclick="nextPage(2)">
-            Next 💌
-        </button>
-
+        And honestly…  
+        I’m really grateful that I got to know someone like you.
     </div>
 
+    <button onclick="nextPage(1,2)">
+        Next 💌
+    </button>
 </div>
 
 <!-- PAGE 2 -->
+<div class="card page" id="page2">
 
-<div class="page" id="page2">
+    <h1>4 Months Already?! 🥹</h1>
 
-    <div class="card">
+    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
 
-        <img 
-        src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
-        class="gif">
-
-        <h1>4 Months 🥹✨</h1>
-
-        <p>
-            These 4 months became
-            full of beautiful memories 💖<br><br>
-
-            Random talks, laughs,
-            silly moments...
-            everything feels special with you 🌸
-        </p>
-
-        <button onclick="nextPage(3)">
-            Continue 💖
-        </button>
-
+    <div class="message">
+        It’s been 4 months already  
+        and somehow every moment with you  
+        became a memory worth keeping ✨
+        <br><br>
+        Random talks, laughs, silly moments…  
+        everything feels special with you 💖
     </div>
 
+    <button onclick="nextPage(2,3)">
+        One More ✨
+    </button>
 </div>
 
 <!-- PAGE 3 -->
+<div class="card page" id="page3">
 
-<div class="page" id="page3">
+    <h1>Bestie Forever? 🌸</h1>
 
-    <div class="card">
+    <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif">
 
-        <img 
-        src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
-        class="gif">
-
-        <h1>Bestie Forever? 🌸</h1>
-
-        <p>
-            Thank you for always being amazing ✨<br><br>
-
-            I hope your birthday becomes
-            as beautiful as your smile 💖
-        </p>
-
-        <button onclick="nextPage(4)">
-           Open Album 🎁
-        </button>
-
+    <div class="message">
+        I just want you to stay happy,  
+        keep smiling and never change 💕
+        <br><br>
+        Thank you for being such an amazing bestie ✨
+        <br><br>
+        Happy Birthday once again, Abhigna 🎂❤️
     </div>
 
-</div>
-
-<!-- LAST PAGE -->
-
-<div class="page last-page" id="page4">
-
-    <div class="gallery">
-
-        <img src="photo1.jpg">
-        <img src="photo2.jpg">
-        <img src="photo3.jpg">
-        <img src="photo4.jpg">
-
-    </div>
-
+    <button onclick="finalPage()">
+        Final Surprise 🎁
+    </button>
 </div>
 
 <script>
 
-/* PAGE SWITCH */
+function nextPage(current,next){
+    document.getElementById("page"+current).classList.remove("active");
+    document.getElementById("page"+next).classList.add("active");
+}
 
-function nextPage(page){
+/* FINAL PAGE */
 
-    document.querySelectorAll(".page")
-    .forEach(p=>{
-        p.classList.remove("active");
-    });
+function finalPage(){
 
-    document.getElementById("page"+page)
-    .classList.add("active");
+    document.body.innerHTML=`
+
+    <style>
+
+    body{
+        margin:0;
+        overflow:auto;
+
+        background:
+        linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
+        url('https://i.pinimg.com/736x/5d/5b/80/5d5b80c9e6fbbdce2fd4c8b1ff3f1f08.jpg');
+
+        background-size:cover;
+        background-position:center;
+        background-attachment:fixed;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        min-height:100vh;
+    }
+
+    .final-page{
+        width:100%;
+        padding:25px;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    /* GALLERY */
+
+    .gallery{
+        width:100%;
+        max-width:390px;
+
+        display:grid;
+        grid-template-columns:1fr 1fr;
+
+        gap:14px;
+    }
+
+    .gallery img{
+        width:100%;
+        height:240px;
+
+        object-fit:cover;
+
+        border-radius:22px;
+
+        box-shadow:
+        0 0 20px rgba(255,255,255,.18);
+
+        transition:.3s;
+    }
+
+    .gallery img:nth-child(2){
+        margin-top:35px;
+    }
+
+    .gallery img:nth-child(3){
+        margin-top:-35px;
+    }
+
+    .gallery img:hover{
+        transform:scale(1.04);
+    }
+
+    </style>
+
+    <div class="final-page">
+
+        <div class="gallery">
+
+            <img src="photo1.jpg">
+            <img src="photo2.jpg">
+            <img src="photo3.jpg">
+            <img src="photo4.jpg">
+
+        </div>
+
+    </div>
+
+    `;
 }
 
 /* HEART RAIN */
 
-function createHeart(){
-
+setInterval(()=>{
     const heart=document.createElement("div");
 
     heart.classList.add("heart");
 
-    heart.innerHTML="💖";
+    heart.innerHTML="❤";
 
     heart.style.left=Math.random()*100+"vw";
 
     heart.style.animationDuration=
     (Math.random()*3+3)+"s";
 
-    heart.style.fontSize=
-    (Math.random()*20+15)+"px";
-
     document.body.appendChild(heart);
 
     setTimeout(()=>{
         heart.remove();
     },6000);
-}
 
-setInterval(createHeart,250);
+},300);
 
 </script>
 
